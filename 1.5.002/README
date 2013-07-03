@@ -1,0 +1,35 @@
+mongoSQL is a SQL user interface for MongoDB.  It allows one to enter SQL
+and execute that SQL and get results back from MongoDB without having to
+construct JSON and/or write Javascript.  Additionally, a SQL statement can be
+disected: it will be broken into the appropriate JSON and/or Javascript and
+displayed so that it can be used directly with the MongoDB APIs.  For SQL
+that requires aggregation, either the MongoDB aggregation framework (default)
+or map reduce can be used.  (Much more detail is available via Help when
+running the application.)
+
+mongoSQL will run on any machine that has Java 1.6 or greater installed on it.
+
+Either Java must be in your path or the run_xnix file (or run_windows.bat
+file for Windows) must be edited to use the path to Java.
+
+It was written by Kearen Software.  Please send comments and questions to
+KeithSchnable@gmail.com - all feedback is helpful and appreciated.
+
+Changes in version 1.5.002:
+    - Fixed bug.  If a SELECT statement has at least one aggregate function
+      but no group-by fields, exactly one document needs to be returned.
+      MongoDB will not produce any documents in this case so the logic is a
+      part of the post processing.  Previously no documents were returned in
+      this case.
+    - Fixed bug.  Previously, if a portion of the script was selected in the
+      UI, the start and end column was not being calculated correctly.  (The
+      start and end row were calculated correctly though.)
+
+Changes in version 1.5.001:
+    - Added condition support for:
+      - EXISTS
+      - NOT EXISTS
+    - Added the options:
+      - OPTION STRICT NULL COMPARE OFF (default)
+      - OPTION STRICT NULL COMPARE ON.
+    - Minor bug fixes.
